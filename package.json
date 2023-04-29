@@ -1,0 +1,35 @@
+{
+  "name": "sag1v-github-actions",
+  "version": "0.0.1",
+  "description": "testing github actions",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "prebuild": "rm -rf dist",
+    "build": "concurrently -n transpile:cjs,transpile:esm --kill-others-on-fail \"npm run transpile:cjs\"  \"npm run transpile:esm\"",
+    "transpile:esm": "NODE_ENV=esm babel src --out-dir dist/esm",
+    "transpile:cjs": "NODE_ENV=cjs babel src --out-dir dist/cjs",
+    "test": "NODE_OPTIONS='--experimental-vm-modules' jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sag1v/github-actions.git"
+  },
+  "author": "Sagiv",
+  "license": "ISC",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "bugs": {
+    "url": "https://github.com/sag1v/github-actions/issues"
+  },
+  "homepage": "https://github.com/sag1v/github-actions#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.4",
+    "@babel/plugin-transform-runtime": "^7.21.4",
+    "@babel/preset-env": "^7.21.5",
+    "concurrently": "^8.0.1",
+    "jest": "^29.5.0"
+  }
+}
