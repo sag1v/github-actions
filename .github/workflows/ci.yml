@@ -46,8 +46,8 @@ jobs:
           name: artifacts
       - name: Test downloaded artifacts
         run: ls -R
-    # - name: Semantic release
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN }}
-    #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-    #   run: semantic-release
+      - name: Semantic release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm run semantic-release
